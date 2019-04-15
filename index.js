@@ -1,5 +1,4 @@
 const Botgram = require('botgram');
-const figlet = require('figlet');
 
 const { TELEGRAM_BOT_TOKEN } = process.env;
 
@@ -11,14 +10,7 @@ if (!TELEGRAM_BOT_TOKEN) {
 const bot = new Botgram(TELEGRAM_BOT_TOKEN);
 
 function onMessage(msg, reply) {
-  figlet(msg.text, (err, data) => {
-    if (err) {
-      reply.text('An error occured. Probably text format is not correct.').then();
-      return;
-    }
-    const markdownResult = `${'```\n'}${data}${'\n```'}`;
-    reply.markdown(markdownResult).then();
-  });
+  reply.text('An error occured. Probably text format is not correct.').then();
 }
 
 bot.text(onMessage);
